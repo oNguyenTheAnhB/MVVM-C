@@ -1,0 +1,7 @@
+github "ReactiveX/RxSwift"
+github "Alamofire/Alamofire"
+github "onevcat/Kingfisher"
+github "DaveWoodCom/XCGLogger"
+github "AliSoftware/OHHTTPStubs"
+github "realm/realm-cocoa"
+github "hackiftekhar/IQKeyboardManager"
