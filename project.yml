@@ -1,0 +1,41 @@
+name: MyProject
+
+############
+# Options
+############
+
+options:
+  minimumXcodeGenVersion: 2.10
+  bundleIdPrefix: com.myapp
+
+############
+# Targets
+############
+
+targets:
+  MyApp:
+    type: application
+    platform: iOS
+    deploymentTarget: "11.0"
+    # sources
+    sources: 
+      - App
+
+    # configs
+
+    # dependencies
+    dependencies:
+      - carthage: RxSwift
+      - carthage: Alamofire
+      - carthage: Kingfisher
+      - carthage: XCGLogger
+      - carthage: OHHTTPStubs
+      - carthage: Realm
+      - carthage: RealmSwift
+      - carthage: IQKeyboardManager
+
+    # settings
+
+    # scheme
+
+    # scripts
