@@ -8,5 +8,9 @@
 import UIKit
 
 class DetailCoordinator: PushedCoordinator {
-
+    func start(with repos: Repos) {
+        let viewModel = DetailViewModel(repos: repos)
+        let viewController = DetailViewController(viewModel: viewModel)
+        showController(viewController, animated: true)
+    }
 }

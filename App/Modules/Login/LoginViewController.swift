@@ -48,8 +48,9 @@ class LoginViewController: ViewController {
             .disposed(by: disposeBag)
         
         output.user.asObservable()
-            .subscribe(onNext: { (user) in
+            .subscribe(onNext: { [weak self] (user) in
                 print(user)
+                self?.coordinator?.showList()
             })
             .disposed(by: disposeBag)
 

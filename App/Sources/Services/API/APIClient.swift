@@ -50,6 +50,7 @@ struct APIClient {
                         let result = try request.decode(data)
                         completion(.success(result))
                     } catch {
+                        print(error)
                         completion(.failure(error))
                     }
                 case .failure(let error):
