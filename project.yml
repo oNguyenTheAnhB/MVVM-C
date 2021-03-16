@@ -26,9 +26,13 @@ targets:
     # dependencies
     dependencies:
       - carthage: RxSwift
+      - carthage: RxCocoa
+      - carthage: RxRelay
+      - carthage: RxBlocking
       - carthage: Alamofire
       - carthage: Kingfisher
       - carthage: XCGLogger
+      - carthage: ObjcExceptionBridging
       - carthage: OHHTTPStubs
       - carthage: Realm
       - carthage: RealmSwift

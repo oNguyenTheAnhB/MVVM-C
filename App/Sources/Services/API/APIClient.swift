@@ -25,34 +25,35 @@ struct APIClient {
         where T: BaseRequestProtocol, T.ResponseType == V {
 
             return Single<V>.create { observer in
-                let calling = callForData(request) { response in
+                let request = callForData(request) { response in
                     switch response {
                     //swiftlint:disable force_cast
-                    case .success(let result): observer(.success(result as! V))
-                    case .failure(let error): observer(.failure(error))
+                    case .success(let result):
+                        observer(.success(result as! V))
+                    case .failure(let error):
+                        observer(.failure(error))
                     //swiftlint:enable force_cast
                     }
                 }
 
-                return Disposables.create { calling.cancel() }
+                return Disposables.create { request.cancel() }
             }
     }
 
     private static func callForData<T, V>(_ request: T, completion: @escaping (APIResult) -> Void) -> DataRequest
         where T: BaseRequestProtocol, T.ResponseType == V {
 
-            return APIClient.request(request).responseJSON { response in
+            return APIClient.request(request).responseData { response in
                 switch response.result {
                 case .success(let data):
-                    if let `data` = data as? Data {
-                        do {
-                            let result = try request.decode(data)
-                            completion(.success(result))
-                        } catch {
-                            completion(.failure(error))
-                        }
+                    do {
+                        let result = try request.decode(data)
+                        completion(.success(result))
+                    } catch {
+                        completion(.failure(error))
                     }
-                case .failure(let error): completion(.failure(error))
+                case .failure(let error):
+                    completion(.failure(error))
                 }
             }
     }
